@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
-class CurrencyRateApi
+final class CurrencyRateApi
 {
     private Client $client;
 
@@ -35,7 +35,7 @@ class CurrencyRateApi
             return null;
         } catch (Throwable $ex) {
             Log::error(
-                'Ошибка получения данных : '.json_encode($ex->getMessage(), JSON_UNESCAPED_UNICODE)
+                'Ошибка получения данных : ' . json_encode($ex->getMessage(), JSON_UNESCAPED_UNICODE)
             );
 
             return null;

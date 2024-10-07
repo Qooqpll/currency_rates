@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('currency_id');
             $table->date('date');
-            $table->string('Abbreviation');
+            $table->string('abbreviation');
             $table->integer('scale');
             $table->string('name');
             $table->decimal('rate', 10, 4);

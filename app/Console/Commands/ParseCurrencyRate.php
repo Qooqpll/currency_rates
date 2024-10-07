@@ -13,11 +13,11 @@ class ParseCurrencyRate extends Command
 
     protected $description = 'Получения официального курса белорусского рубля по отношению к иностранным валютам';
 
-    public function handle(CurrencyRateApi $currencyRates): void
+    public function handle(CurrencyRateApi $currencyRateApi): void
     {
-        $rates = $currencyRates->getCurrencyRates();
+        $rates = $currencyRateApi->getCurrencyRates();
 
-        DB::transaction(function() use ($rates) {
+        DB::transaction(function () use ($rates) {
             foreach ($rates as $rate) {
                 CurrencyRate::query()->updateOrInsert(
                     ['currency_id' => $rate['Cur_ID'], 'date' => $rate['Date']],
